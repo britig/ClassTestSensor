@@ -20,13 +20,14 @@ public class PlotData extends Activity {
     private LineGraphSeries<DataPoint> mSeries;
     //shows unfiltered accelerometer data
     private GraphView graph;
+    private double lastXValue = 5d;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plot_data);
         Intent data = getIntent();
         // Receiving the Data
-        String name = data.getStringExtra("x");
+        float array[] = data.getFloatArrayExtra("myarray");
         graph = (GraphView) findViewById(R.id.graph);
         Viewport gViewport =  graph.getViewport();
         gViewport.setXAxisBoundsManual(true);
@@ -38,13 +39,7 @@ public class PlotData extends Activity {
         gViewport.setScalableY(true);
         // activate vertical scrolling
         gViewport.setScrollableY(true);
-        mSeries =  new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
+        mSeries =  new LineGraphSeries<>();
         //mseries features
         mSeries.setTitle("Acceleration curve");
         mSeries.setColor(Color.GREEN);
@@ -52,5 +47,12 @@ public class PlotData extends Activity {
         mSeries.setDataPointsRadius(10);
         mSeries.setThickness(8);
         graph.addSeries(mSeries);
+        lastXValue += 1d;
+        //Append data to plot graph whenever there is a change i acceleration plots upto 500 data changes
+        int i=0;
+        while(i<499) {
+            mSeries.appendData(new DataPoint(lastXValue, array[i]), true, 500);
+            i++;
+        }
     }
 }
