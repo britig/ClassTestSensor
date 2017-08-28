@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     float x,y,z,p,t;
     float normalizedValue;
     private Sensor accelerometer;
+    float array[];
+    int i=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
         mSensorManager = (SensorManager)this.getSystemService(SENSOR_SERVICE);
         accelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        array=new float[500];
     }
 
     /*Method called on sensor event change*/
@@ -43,6 +46,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             z = event.values[2];
             normalizedValue = (float) Math.sqrt(Math.pow(x,2)+Math.pow(y,2)+Math.pow(z,2));
             temperature.setText("Acceleration:"+Float.toString(normalizedValue));
+            while(i<499){
+                array[i]=normalizedValue;
+                i++;
+            }
         }
         else if(event.sensor.getType()==Sensor.TYPE_LIGHT){
             tvX.setText("Light:"+Float.toString(event.values[0]));
@@ -80,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Intent nextScreen = new Intent(getApplicationContext(), PlotData.class);
 
         //Sending data to another Activity
-        nextScreen.putExtra("x", temperature.getText().toString());
+        nextScreen.putExtra("myarray", array);
 
         Log.e("n", temperature.getText().toString());
 
