@@ -11,4 +11,5 @@ The below two screenshots display the changing value of different sensors:
 
 The plot graph on the next screen
 
-![screenshot_2017-08-28-16-04-58](https://user-images.githubusercontent.com/30759817/29771139-e510c4fc-8c0f-11e7-9cf0-536ec6235f22.png)
+![screenshot_2017-08-28-16-34-52](https://user-images.githubusercontent.com/30759817/29771206-3fa00676-8c10-11e7-9481-c06c02c5600a.png)
+
