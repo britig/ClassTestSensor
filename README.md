@@ -13,3 +13,7 @@ The plot graph on the next screen
 
 ![screenshot_2017-08-28-16-34-52](https://user-images.githubusercontent.com/30759817/29771206-3fa00676-8c10-11e7-9481-c06c02c5600a.png)
 
+With Back button
+
+![screenshot_2017-08-28-17-01-07](https://user-images.githubusercontent.com/30759817/29771670-bb69b48a-8c12-11e7-87b0-84d92d292fb8.png)
+
